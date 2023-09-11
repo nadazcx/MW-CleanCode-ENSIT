@@ -5,37 +5,40 @@ function imafunction(a1: Number, a2: Number, a3: Number): boolean {
 
 //Q2: We want to have student type with some information. (If it's not pronounceable how you will say it)
 type DtaRcrd102 = {
-  xvcnxjv: String;
-  hfdsjlfh: String;
-  ghdkfkkk: number;
+  name : String;
+  familyName: String;
+  id: number;
 }
 
 //Q3: What we should call our function that return User?
 getUserData();
-getUser();
-getUserInformation();
+
 
 //Q4: We want to check if that our student yearly grade is acceptable for any country Education System (in Tunisia <20, in USA 100)
-isGradeBelowMax(grade, 20)
+isGradeBelowMax(maxGrade, 20)
 
 //Q5: I know you got the idea of variable names but I want it to be clear for anyone around the world.
-Student s = new Student();
-Grade g = new Grade();
-Professor p = new Professor();
+Student student = new Student();
+Grade grade = new Grade();
+Professor pofessor  = new Professor();
 
-//Q6: Don't you think we are overdoing it???
+//Q6: Don't you think we are overdoing it??? ( ys i think)
 Type Student {
-studentFirstName: String;
-studentLastName: String;
-StudentId: Number;
+firstName: String;
+lastName: String;
+id: Number;
 }
 
 //Q7: What we can do to avoid giving unappropriat gender value? (Hint enum)
+Enum gender {
+    "Male",
+    "Female"
+}
 Type Student {
 firstName: String;
 lastName: String;
 Id: Number;
-gender: String;
+gender: gender;
 }
 
 function displayName(student: Student){
@@ -51,32 +54,32 @@ switch (student.gender) {
     }
 }
 
-//Q8: Is it good idea to display all these arguments in one line like this?
+//Q8: Is it good idea to display all these arguments in one line like this? no 
+we can use  a class student
 displayUserDetails(firstName: String, lastName: String, id: Number, department: String, university: String){
 // Some logic happens here
 }
-
-//Q9: Is it good idea to give all these arguments to one function?
+ 
+//Q9: Is it good idea to give all these arguments to one function?  No we can use  a class student
 displayUserDetails(firstName: String, lastName: String, id: Number, department: String, university: String){
 }
 
 //Q10: Who wants to have a function that do multiple things with multiple comments?
 function evaluateStudents(studentsList) {
-  let passedStudents = []; // This will be filled with list of passed students
-  const MINIMUM_GRADE_TO_PASS = 10; // We set because to pass you need 10 at least
-  // Here we will go through all the students and check our conditions and adjust students and passed list depending on that
+  let passedStudents = [];
+  const MINIMUM_GRADE_TO_PASS = 10; 
   studentsList.forEach((student) => {
     if (student.score >= MINIMUM_GRADE_TO_PASS) {
-      passedStudents.push(student); // Here we add students
+      passedStudents.push(student); 
     } else {
       if (student.failedBefore) {
         console.log(
           student.gender === Gender.Male
-            ? `Sorry Mr. ${student.name}, you are suspended.` // This message for male students.
-            : `Sorry Mrs. ${student.name}, you are suspended.` // This message for female students.
+            ? `Sorry Mr. ${student.name}, you are suspended.` 
+            : `Sorry Mrs. ${student.name}, you are suspended.` 
         );
       } else {
-          student.failedBefore = true; // This to set failedBefore to true for the students who failed for the first time
+          student.failedBefore = true;
       }
     }
   });
